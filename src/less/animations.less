@@ -1,0 +1,132 @@
+//@import "variables.less";
+//@import "base.less";
+
+
+.before-load-hidden {
+	opacity: 0;
+	transition: opacity 0s;
+}
+
+.animated {
+	
+
+	&[data-animation='fade-in'] {
+		opacity: 1;
+		transition: opacity 0.3s;
+	}
+
+	&[data-animation='fade-in-left'] {
+		opacity: 1;
+		transition: opacity 0.3s, transform 0.3s;
+		transform: translateX(0);
+	}
+
+	&[data-animation='fade-in-right'] {
+		opacity: 1;
+		transition: opacity 0.3s, transform 0.3s;
+		transform: translateX(0);
+	}
+
+
+	&[data-animation='fade-in-left--long'] {
+		opacity: 1;
+		transition: opacity 0.3s, transform 0.3s;
+		transform: translateX(0);
+	}
+
+	&[data-animation='fade-in-right--long'] {
+		opacity: 1;
+		transition: opacity 0.3s, transform 0.3s;
+		transform: translateX(0);
+	}
+
+
+	&[data-animation='fade-in-bottom'] {
+		opacity: 1;
+		transition: opacity 0.3s, transform 0.3s;
+		transform: translateY(0);
+	}
+
+
+	&[data-animation='pop'] {
+		opacity: 1;
+
+		animation-name: fade-in-pop;
+		animation-duration: 0.3s;
+		animation-timing-function: linear;
+		animation-iteration-count: 1;
+
+		transform: translateZ(0);
+		box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+
+		backface-visibility: hidden;
+		-moz-osx-font-smoothing: grayscale;
+	}
+
+
+	&&--slow {
+		transition: all 0.6s;
+	}
+}
+
+.animated--before {
+	&[data-animation='fade-in'] {
+		transition: 0s;
+		opacity: 0;
+	}
+
+
+	&[data-animation='fade-in-left'] {
+		opacity: 0;
+		transition: 0s;
+		transform: translateX(-50px);
+	}
+
+	&[data-animation='fade-in-right'] {
+		opacity: 0;
+		transition: 0s;
+		transform: translateX(50px);
+	}
+
+
+
+	&[data-animation='fade-in-left--long'] {
+		opacity: 0;
+		transition: 0s;
+		transform: translateX(-150px);
+	}
+
+	&[data-animation='fade-in-right--long'] {
+		opacity: 0;
+		transition: 0s;
+		transform: translateX(150px);
+	}
+
+
+
+	&[data-animation='fade-in-bottom'] {
+		opacity: 0;
+		transition: 0s;
+		transform: translateY(100px);
+	}
+
+
+	&[data-animation='pop'] {
+		animation: none;
+		opacity: 0;
+	}
+}
+
+
+
+@keyframes fade-in-pop {
+  50% {
+    transform: scale(1.2);
+    opacity: 1;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}

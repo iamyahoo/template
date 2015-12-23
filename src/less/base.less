@@ -1,0 +1,183 @@
+// @import "variables.less";
+
+
+/*for IE8 start*/
+main,
+header,
+nav,
+article,
+aside,
+footer,
+figure {
+    display: block;
+}
+figcaption {
+    display: inline;
+}
+/*for IE8 end*/
+
+
+
+/*------------common styles start--------------*/
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+.clearfix {
+    &:before, &:after{ 
+        content:""; 
+        display:table; 
+    }
+    &:after {
+        clear: both; 
+    }
+}
+
+.wrapper {
+    width: 1200px;
+    margin: 0 auto;
+}
+
+.hidden {
+    display: none!important;
+    visibility: hidden!important;
+}
+
+.invisible {
+    visibility: hidden;
+}
+
+.text_center {
+    text-align: center;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+.text {
+    font-family: @font-family_1;
+    font-size: @font-size;
+    color: @color-brown-80;
+}
+
+.title {
+    margin: 20px 0;
+    font-family: @font-family_1_bold;
+    font-size: @font-size_medium;
+    text-align: center;
+    text-transform: uppercase;
+    color: @color-brown-50;
+}
+
+.text_bold {
+    font-family: @font-family_1_bold;
+}
+
+// buttons start
+.btn {
+    display: block;
+
+    &:hover,
+    &:active {
+        
+    }
+}
+// buttons end
+
+
+/*====================common styles end====================*/
+
+
+
+/*====================base styles start====================*/
+html {
+    box-sizing: border-box;
+    font-family: @font-family_1;
+    font-size: @font-size;
+    line-height: @line-height_large;
+    min-width: @total-width + 20px;
+    background-color: @color-white;
+    height: 100%;
+}
+
+body {
+    position: relative;
+    height: 100%;
+    margin: 0;
+}
+
+h1 {
+    margin: 20px 0;
+    font-family: @font-family_1_bold;
+    font-size: @font-size_medium;
+    text-align: center;
+    text-transform: uppercase;
+    color: @color-brown-50;   
+}
+
+h2 {
+
+}
+
+h3 {
+
+}
+
+p {
+    font-family: @font-family_1;
+    font-size: @font-size;
+    color: @color-brown-80;
+    margin: 15px 0;
+    line-height: @line-height_large;
+}
+
+span {
+    color: @color-brown-80;
+}
+
+a {
+    font-family: @font-family_1;
+    font-size: @font-size;
+    color: @color-brown-50;
+    text-decoration: none;
+
+    &:hover {
+        text-decoration: underline;
+    }
+
+    &[href^="tel"] {
+        text-decoration: none;
+        white-space: nowrap;
+    }
+}
+
+input {
+    font-size: @font-size;
+
+    &[type="text"] {
+        cursor: text;
+    }
+
+    &[type="radio"],
+    &[type="checkbox"] {
+        cursor: pointer;
+    }
+}
+
+label {
+    font-size: @font-size;
+    cursor: pointer;
+}
+
+textarea {
+    resize: none;
+}
+
+
+/*====================base styles end=====================*/
