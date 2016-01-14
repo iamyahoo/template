@@ -1,4 +1,4 @@
-var gulp = require('gulp');	
+var gulp = require('gulp'); 
 var less = require('gulp-less');
 var autoprefixer = require('gulp-autoprefixer')
 var concat = require('gulp-concat');
@@ -10,6 +10,7 @@ var spritesmith = require('gulp.spritesmith');
 var plumber = require('gulp-plumber');
 var path = require('path');
 var gutil = require('gulp-util');
+var connect = require('gulp-connect');
 
 
 var onError = function (err) {  
@@ -35,18 +36,27 @@ gulp.task('concat-css', ['less'], function() {
     return gulp.src(['src/css/*.css'])
         .pipe(plumber({ errorHandler: onError }))
         .pipe(concat({ path: 'main.css', stat: { mode: 0666 }}))
-        .pipe(gulp.dest('src/css'));
+        .pipe(gulp.dest('build/css'));
 });
 
 
 // расставляем вендорные префиксы
 gulp.task('autoprefixer', ['concat-css'], function () {
-	return gulp.src('src/css/main.css')
-		.pipe(autoprefixer({
-			browsers: ['last 2 versions'],
-			cascade: false
-		}))
-		.pipe(gulp.dest('build/css'));
+    return gulp.src('build/css/main.css')
+        .pipe(autoprefixer({
+            browsers: ['last 2 versions'],
+            cascade: false
+        }))
+        .pipe(gulp.dest('build/css'));
+});
+
+
+//запускаем локальный сервер
+gulp.task('connect', function() {
+  connect.server({
+    port: 8888,
+    root: ['build']
+  });
 });
 
 
