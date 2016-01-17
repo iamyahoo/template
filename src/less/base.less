@@ -25,7 +25,7 @@ figcaption {
     box-sizing: inherit;
 }
 
-.clearfix {
+.clearfix() {
     &:before, &:after{ 
         content:""; 
         display:table; 
@@ -35,49 +35,45 @@ figcaption {
     }
 }
 
-.wrapper {
-    width: 1200px;
-    margin: 0 auto;
+.hidden() {
+    display: none !important;
+    visibility: hidden !important;
 }
 
-.hidden {
-    display: none!important;
-    visibility: hidden!important;
-}
-
-.invisible {
+.invisible() {
     visibility: hidden;
 }
 
-.text_center {
+.text_center() {
     text-align: center;
 }
 
-.left {
+.left() {
     float: left;
 }
 
-.right {
+.right() {
     float: right;
 }
-.text {
-    font-family: @font-family_1;
-    font-size: @font-size;
-    color: @color-brown-80;
+.text() {
+    font-family: @font-family;
+    font-size: @text_default_lg;
+    color: @color-black;
 }
 
-.title {
+.title() {
     margin: 20px 0;
-    font-family: @font-family_1_bold;
-    font-size: @font-size_medium;
+    font-family: @font-family_bold;
+    font-size: @text_default_lg;
     text-align: center;
     text-transform: uppercase;
-    color: @color-brown-50;
+    color: @color-black;
 }
 
-.text_bold {
-    font-family: @font-family_1_bold;
+.text_bold() {
+    font-family: @font-family_bold;
 }
+
 
 // buttons start
 .btn {
@@ -105,12 +101,12 @@ figcaption {
 
 html {
     box-sizing: border-box;
-    font-family: @font-family_1;
-    font-size: @font-size;
-    line-height: @line-height_large;
-    min-width: @total-width + 20px;
-    background-color: @color-white;
+    font-family: @font-family;
+    font-size: @text_default_lg;
+    line-height: @line-height_default_lg;
+    min-width: @total-width_sm;
     height: 100%;
+    background-color: @color-white;
 }
 
 body {
@@ -119,40 +115,60 @@ body {
     margin: 0;
 }
 
-h1 {
+h1, .h1 {
     margin: 20px 0;
-    font-family: @font-family_1_bold;
-    font-size: @font-size_medium;
-    text-align: center;
-    text-transform: uppercase;
-    color: @color-brown-50;   
+    font-family: @font-family_bold;
+    font-size: @h1-size_lg;
+    line-height: @h1-line-height_lg;
+    color: @color-black;   
 }
 
-h2 {
-
+h2, .h2 {
+    margin: 20px 0;
+    font-family: @font-family_bold;
+    font-size: @h2-size_lg;
+    line-height: @h2-line-height_lg;
+    color: @color-black;   
 }
 
-h3 {
+h3, .h3 {
+    margin: 20px 0;
+    font-family: @font-family_bold;
+    font-size: @h3-size_lg;
+    line-height: @h3-line-height_lg;
+    color: @color-black;
+}
 
+h4, .h4 {
+    margin: 20px 0;
+    font-family: @font-family_bold;
+    font-size: @h4-size_lg;
+    line-height: @h4-line-height_lg;
+    color: @color-black;
 }
 
 p {
-    font-family: @font-family_1;
-    font-size: @font-size;
-    color: @color-brown-80;
+    font-family: @font-family;
+    font-size: @text_default_lg;
+    color: @color-black;
     margin: 15px 0;
-    line-height: @line-height_large;
+    line-height: @line-height_default_lg;
 }
 
 span {
-    color: @color-brown-80;
+    font-family: @font-family;
+    font-size: @text_default_lg;
+    color: @color-black;
+    line-height: @line-height_default_lg;
 }
 
 a {
-    font-family: @font-family_1;
-    font-size: @font-size;
-    color: @color-brown-50;
+    font-family: @font-family;
+    font-size: @text_default_lg;
+    color: @color-black;
+    line-height: @line-height_default_lg;
     text-decoration: none;
+    transition: all .2s;
 
     &:hover {
         text-decoration: underline;
@@ -165,11 +181,18 @@ a {
 }
 
 input {
-    font-size: @font-size;
+    font-size: @text_default_lg;
 
-    &[type="text"] {
+    &[type="text"],
+    &[type="search"] {
         cursor: text;
+        text-overflow: ellipsis;
     }
+
+    &[type="text"]:focus::-webkit-input-placeholder {color: transparent; transition: color .3s;}
+    &[type="text"]:focus::-moz-placeholder          {color: transparent; transition: color .3s;}
+    &[type="search"]:focus::-webkit-input-placeholder {color: transparent; transition: color .3s;}
+    &[type="search"]:focus::-moz-placeholder          {color: transparent; transition: color .3s;}
 
     &[type="radio"],
     &[type="checkbox"] {
@@ -178,13 +201,193 @@ input {
 }
 
 label {
-    font-size: @font-size;
+    font-size: @text_default_lg;
     cursor: pointer;
 }
 
 textarea {
     resize: none;
 }
+
+@media (max-width: @total-width_md) {
+    h1 {
+        margin: 20px 0;
+        font-family: @font-family_bold;
+        font-size: @h1-size_md;
+        line-height: @h1-line-height_md;
+        color: @color-black;   
+    }
+
+    h2 {
+        margin: 20px 0;
+        font-family: @font-family_bold;
+        font-size: @h2-size_md;
+        line-height: @h2-line-height_md;
+        color: @color-black;   
+    }
+
+    h3 {
+        margin: 20px 0;
+        font-family: @font-family_bold;
+        font-size: @h3-size_md;
+        line-height: @h3-line-height_md;
+        color: @color-black;
+    }
+
+    h4 {
+        margin: 20px 0;
+        font-family: @font-family_bold;
+        font-size: @h4-size_md;
+        line-height: @h4-line-height_md;
+        color: @color-black;
+    }
+
+    p {
+        font-family: @font-family;
+        font-size: @text_default_md;
+        color: @color-black;
+        margin: 15px 0;
+        line-height: @line-height_default_md;
+    }
+
+    span {
+        font-family: @font-family;
+        font-size: @text_default_md;
+        color: @color-black;
+        line-height: @line-height_default_md;
+    }
+
+    a {
+        font-family: @font-family;
+        font-size: @text_default_md;
+        color: @color-black;
+        line-height: @line-height_default_md;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &[href^="tel"] {
+            text-decoration: none;
+            white-space: nowrap;
+        }
+    }
+
+    input {
+        font-size: @text_default_md;
+
+        &[type="text"] {
+            cursor: text;
+        }
+
+        &[type="radio"],
+        &[type="checkbox"] {
+            cursor: pointer;
+        }
+    }
+
+    label {
+        font-size: @text_default_md;
+        cursor: pointer;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+}
+
+@media (max-width: @total-width_sm) {
+ 
+    h1 {
+        margin: 20px 0;
+        font-family: @font-family_bold;
+        font-size: @h1-size_sm;
+        line-height: @h1-line-height_sm;
+        color: @color-black;   
+    }
+
+    h2 {
+        margin: 20px 0;
+        font-family: @font-family_bold;
+        font-size: @h2-size_sm;
+        line-height: @h2-line-height_sm;
+        color: @color-black;   
+    }
+
+    h3 {
+        margin: 20px 0;
+        font-family: @font-family_bold;
+        font-size: @h3-size_sm;
+        line-height: @h3-line-height_sm;
+        color: @color-black;
+    }
+
+    h3 {
+        margin: 20px 0;
+        font-family: @font-family_bold;
+        font-size: @h4-size_sm;
+        line-height: @h4-line-height_sm;
+        color: @color-black;
+    }
+
+    p {
+        font-family: @font-family;
+        font-size: @text_default_sm;
+        color: @color-black;
+        margin: 15px 0;
+        line-height: @line-height_default_sm;
+    }
+
+    span {
+        font-family: @font-family;
+        font-size: @text_default_sm;
+        color: @color-black;
+        line-height: @line-height_default_sm;
+    }
+
+    a {
+        font-family: @font-family;
+        font-size: @text_default_sm;
+        color: @color-black;
+        line-height: @line-height_default_sm;
+        text-decoration: none;
+
+        &:hover {
+            text-decoration: underline;
+        }
+
+        &[href^="tel"] {
+            text-decoration: none;
+            white-space: nowrap;
+        }
+    }
+
+    input {
+        font-size: @text_default_sm;
+
+        &[type="text"] {
+            cursor: text;
+        }
+
+        &[type="radio"],
+        &[type="checkbox"] {
+            cursor: pointer;
+        }
+    }
+
+    label {
+        font-size: @text_default_sm;
+        cursor: pointer;
+    }
+
+    textarea {
+        resize: none;
+    }
+}
+
+
 
 
 /*====================base styles end=====================*/

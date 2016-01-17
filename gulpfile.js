@@ -1,7 +1,8 @@
 var gulp = require('gulp'); 
 var less = require('gulp-less');
-var autoprefixer = require('gulp-autoprefixer')
 var concat = require('gulp-concat');
+var autoprefixer = require('gulp-autoprefixer');
+var csscomb = require('gulp-csscomb');
 var gulpFilter = require('gulp-filter');
 var imagemin = require('gulp-imagemin');
 var uglify = require('gulp-uglify');
@@ -41,12 +42,13 @@ gulp.task('concat-css', ['less'], function() {
 
 
 // расставляем вендорные префиксы
-gulp.task('autoprefixer', ['concat-css'], function () {
+gulp.task('styles', ['concat-css'], function () {
     return gulp.src('build/css/main.css')
         .pipe(autoprefixer({
             browsers: ['last 2 versions'],
             cascade: false
         }))
+        .pipe(csscomb())
         .pipe(gulp.dest('build/css'));
 });
 
@@ -62,6 +64,6 @@ gulp.task('connect', function() {
 
 // задача по умолчанию
 gulp.task('default', function() {
-    gulp.watch('src/less/*.less', ['less', 'concat-css', 'autoprefixer']);  
+    gulp.watch('src/less/*.less', ['less', 'concat-css', 'styles']);  
     // gulp.watch('src/img/**/*', ['imagemin']);
 });
